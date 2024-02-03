@@ -7,7 +7,7 @@ namespace MessengerSignalRAPI.Services.Abstractions
         /// <summary>
         /// Получить список чатов
         /// </summary>
-        Task ViewListChatsAsync();
+        Task<IEnumerable<string>> ViewListChatsAsync();
 
         /// <summary>
         /// Войти в чат

@@ -1,4 +1,6 @@
 using MessengerSignalRAPI.Controllers.Dto;
+using MessengerSignalRAPI.Services.Abstractions;
+using MessengerSignalRAPI.Services.Options;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessengerSignalRAPI.Controllers
@@ -10,13 +12,21 @@ namespace MessengerSignalRAPI.Controllers
     [Route("api/chat")]
     public class ChatController : ControllerBase
     {
+        private readonly IChatService chatService;
+
+        public ChatController(IChatService chatService)
+        {
+            this.chatService = chatService;
+        }
+
         /// <summary>
         /// Получить список чатов
         /// </summary>
         [HttpGet("list")]
         public async Task<IActionResult> ViewListChatsAsync()
         {
-            return Ok();
+            var chats = await chatService.ViewListChatsAsync();
+            return Ok(chats);
         }
 
         /// <summary>
@@ -43,6 +53,7 @@ namespace MessengerSignalRAPI.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> AddChatAsync(AddChatDto request)
         {
+            await chatService.AddChatAsync(new AddChatOptions(request.name));
             return Ok();
         }
 
@@ -52,6 +63,7 @@ namespace MessengerSignalRAPI.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> DeleteChatAsync(DeleteChatDto request)
         {
+            await chatService.DeleteChatAsync(new DeleteChatOptions(request.name));
             return Ok();
         }
 

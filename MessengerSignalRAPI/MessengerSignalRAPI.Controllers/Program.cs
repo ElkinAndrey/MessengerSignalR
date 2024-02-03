@@ -1,9 +1,13 @@
+using MessengerSignalRAPI.Services.Abstractions;
+using MessengerSignalRAPI.Services.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IChatService, ChatService>();
 
 var app = builder.Build();
 
