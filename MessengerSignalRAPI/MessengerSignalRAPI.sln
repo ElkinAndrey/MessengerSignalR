@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessengerSignalRAPI.Controllers", "MessengerSignalRAPI.Controllers\MessengerSignalRAPI.Controllers.csproj", "{27A1E1BE-576A-407D-95B5-515876660872}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27A1E1BE-576A-407D-95B5-515876660872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A1E1BE-576A-407D-95B5-515876660872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A1E1BE-576A-407D-95B5-515876660872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A1E1BE-576A-407D-95B5-515876660872}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {824477D3-94C6-4A2C-B120-B6C3EF61A1BF}
+	EndGlobalSection
+EndGlobal
