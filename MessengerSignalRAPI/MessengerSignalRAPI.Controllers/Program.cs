@@ -17,6 +17,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(options =>
+    options.WithOrigins("http://localhost:3000") //  Кому можно получать данные с сервера
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

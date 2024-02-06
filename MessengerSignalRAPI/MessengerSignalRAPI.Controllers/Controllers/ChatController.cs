@@ -60,10 +60,10 @@ namespace MessengerSignalRAPI.Controllers
         /// <summary>
         /// Удалить чат
         /// </summary>
-        [HttpDelete("delete")]
-        public async Task<IActionResult> DeleteChatAsync(DeleteChatDto request)
+        [HttpDelete("delete/{name}")]
+        public async Task<IActionResult> DeleteChatAsync(string name)
         {
-            await chatService.DeleteChatAsync(new DeleteChatOptions(request.name));
+            await chatService.DeleteChatAsync(new DeleteChatOptions(name));
             return Ok();
         }
 
