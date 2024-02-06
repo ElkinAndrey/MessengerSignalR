@@ -9,7 +9,6 @@ const hubConnection = new HubConnectionBuilder()
   .build();
 hubConnection.start();
 
-let messagesChangeEmpty = false;
 const App = () => {
   const [name, nameChange] = useState("");
   const [message, messageChange] = useState("");
@@ -43,8 +42,11 @@ const App = () => {
     if (selectedGroup !== "") {
       hubConnection.invoke("Exit", name, selectedGroup);
     }
-    selectedGroupChange(n);
     hubConnection.invoke("Enter", name, n);
+    if (selectedGroup !== "") {
+      messagesChange([]);
+    }
+    selectedGroupChange(n);
   };
 
   const del = (name) => {
@@ -58,14 +60,14 @@ const App = () => {
   };
 
   const displayMessage = (m, u = null) => {
-    messages.push({ message: m, user: u });
-    messagesChange([...messages]);
+    messagesChange([...messages, { message: m, user: u }]);
   };
+
+  hubConnection.on("Receive", displayMessage);
+  hubConnection.on("Notify", displayMessage);
 
   useEffect(() => {
     fetchGet();
-    hubConnection.on("Receive", displayMessage);
-    hubConnection.on("Notify", displayMessage);
   }, []);
 
   return (
@@ -92,7 +94,6 @@ const App = () => {
           </div>
         ))}
       </div>
-
       <div>
         <b>{`Чат: ${selectedGroup}`}</b>
         <div>
