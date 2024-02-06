@@ -1,8 +1,10 @@
+using MessengerSignalRAPI.Controllers.Hubs;
 using MessengerSignalRAPI.Services.Abstractions;
 using MessengerSignalRAPI.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -20,12 +22,16 @@ if (app.Environment.IsDevelopment())
 app.UseCors(options =>
     options.WithOrigins("http://localhost:3000") //  Кому можно получать данные с сервера
         .AllowAnyHeader()
-        .AllowAnyMethod());
+        .AllowAnyMethod()
+        .AllowCredentials());
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapHub<ChatHub>("/message");
+
 app.MapControllers();
+
 
 app.Run();
