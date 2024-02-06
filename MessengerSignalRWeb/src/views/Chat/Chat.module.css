@@ -1,0 +1,27 @@
+.body {
+  padding: 20px 30px;
+}
+
+.notification {
+  margin: 5px 0px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  background: #f0f0f0;
+}
+
+.message {
+  margin: 5px 0px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  background: #ffffff;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.text{
+
+}

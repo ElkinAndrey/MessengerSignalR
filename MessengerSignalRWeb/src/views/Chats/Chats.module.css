@@ -1,0 +1,18 @@
+.body {
+  background: #271c46;
+  width: 250px;
+  height: 100%;
+}
+
+.chat {
+  color: #ffffff;
+  padding: 20px 30px;
+  cursor: pointer;
+}
+
+.selectedChat {
+  color: #ffffff;
+  background: #211940;
+  padding: 20px 30px;
+  cursor: pointer;
+}

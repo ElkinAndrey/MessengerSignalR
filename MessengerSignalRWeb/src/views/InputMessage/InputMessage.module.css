@@ -1,0 +1,26 @@
+.input {
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #ffffff;
+  transition: background-color 0.2s;
+  /* transition: background-color 0.3s; */
+}
+
+.input:focus {
+  background-color: #f8f8f8;
+}
+
+.button {
+  color: #ffffff;
+  border: 0px black solid;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #271c46;
+  cursor: pointer;
+  margin-left: 10px;
+}
