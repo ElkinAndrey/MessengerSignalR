@@ -8,20 +8,12 @@ const hubConnection = new HubConnectionBuilder()
   .withUrl("https://localhost:7263/message")
   .build();
 hubConnection.start();
-// получение сообщения для определенной группы
-hubConnection.on("Receive", (message, user) => {
-  console.log(`Пользователь: ${user}`);
-  console.log(`Сообщение: ${message}`);
-});
 
-// получение общего уведомления
-hubConnection.on("Notify", (message) => {
-  console.log(`Сообщение: ${message}`);
-});
-
+let messagesChangeEmpty = false;
 const App = () => {
   const [name, nameChange] = useState("");
   const [message, messageChange] = useState("");
+  const [messages, messagesChange] = useState([]);
   const [selectedGroup, selectedGroupChange] = useState("");
   const [newChat, newChatChange] = useState("");
   const [chats, chatsChange] = useState([]);
@@ -48,6 +40,9 @@ const App = () => {
   };
 
   const join = (n) => {
+    if (selectedGroup !== "") {
+      hubConnection.invoke("Exit", name, selectedGroup);
+    }
     selectedGroupChange(n);
     hubConnection.invoke("Enter", name, n);
   };
@@ -62,8 +57,15 @@ const App = () => {
       .catch((error) => console.error(error));
   };
 
+  const displayMessage = (m, u = null) => {
+    messages.push({ message: m, user: u });
+    messagesChange([...messages]);
+  };
+
   useEffect(() => {
     fetchGet();
+    hubConnection.on("Receive", displayMessage);
+    hubConnection.on("Notify", displayMessage);
   }, []);
 
   return (
@@ -99,6 +101,13 @@ const App = () => {
             onChange={(e) => messageChange(e.target.value)}
           />
           <button onClick={send}>Отправить</button>
+        </div>
+        <div>
+          {messages.map((m, index) => (
+            <div key={index}>{`${m.user !== null ? `${m.user}: ` : ""}${
+              m.message
+            }`}</div>
+          ))}
         </div>
       </div>
     </div>

@@ -14,5 +14,11 @@ namespace MessengerSignalRAPI.Controllers.Hubs
         {
             await Clients.Group(groupName).SendAsync("Receive", message, userName);
         }
+
+        public async Task Exit(string username, string groupName)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
+            await Clients.Group(groupName).SendAsync("Notify", $"{username} вышел из чата");
+        }
     }
 }
