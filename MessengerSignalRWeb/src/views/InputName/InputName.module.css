@@ -6,7 +6,6 @@
   outline: 0px black solid;
   background-color: #ffffff;
   transition: outline 0.05s, background-color 0.2s;
-  /* transition: background-color 0.3s; */
 }
 
 .input:focus {

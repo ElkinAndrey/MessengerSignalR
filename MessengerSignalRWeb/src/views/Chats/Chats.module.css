@@ -1,6 +1,6 @@
 .body {
   background: #271c46;
-  width: 250px;
+  width: 270px;
   height: 100%;
 }
 
@@ -15,4 +15,74 @@
   background: #1c153a;
   padding: 20px 30px;
   cursor: pointer;
+}
+
+.header {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 36px;
+}
+
+.add {
+  background-color: #ffffff;
+  border: 0px;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addLogo {
+  color: #000000;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.addInput {
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #ffffff;
+  width: 350px;
+  margin-bottom: 20px;
+  transition: outline 0.05s, background-color 0.2s;
+}
+
+.addInput:focus {
+  outline: 2px black solid;
+  background-color: #f8f8f8;
+}
+
+.addButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addButton {
+  color: #ffffff;
+  border: 0px black solid;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #271c46;
+  cursor: pointer;
+}
+
+.addButton:disabled {
+  color: #d6d6d6;
+  background-color: #7c66b8;
+  cursor:auto
 }
