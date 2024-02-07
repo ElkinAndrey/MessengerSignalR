@@ -1,7 +1,12 @@
 import React from "react";
 import classes from "./InputMessage.module.css";
 
-const InputMessage = ({ value, setValue, onClick }) => {
+const InputMessage = ({ value, setValue, onClick, disabled }) => {
+  const send = () => {
+    onClick();
+    setValue("");
+  };
+
   return (
     <div>
       <input
@@ -10,7 +15,11 @@ const InputMessage = ({ value, setValue, onClick }) => {
         onChange={(e) => setValue(e.target.value)}
         placeholder="Сообщение"
       />
-      <button className={classes.button} onClick={onClick}>
+      <button
+        disabled={value === "" || disabled}
+        className={classes.button}
+        onClick={send}
+      >
         Отправить
       </button>
     </div>

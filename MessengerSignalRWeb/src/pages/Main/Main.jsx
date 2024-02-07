@@ -82,7 +82,12 @@ const Main = ({ hubConnection }) => {
         <div className={classes.content}>
           <Chat messages={messages} selectedChat={selectedChat} />
         </div>
-        <Footer message={message} messageChange={messageChange} send={send} />
+        <Footer
+          message={message}
+          messageChange={messageChange}
+          send={send}
+          name={name}
+        />
       </div>
     </div>
   );

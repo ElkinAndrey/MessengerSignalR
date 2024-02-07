@@ -24,3 +24,9 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
+.button:disabled {
+  color: #d6d6d6;
+  background-color: #7c66b8;
+  cursor:auto
+}
