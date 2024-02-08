@@ -20,6 +20,16 @@
   max-width: 100%;
 }
 
+.myMessage {
+  margin: 5px 0px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  background: #44327a;
+  max-width: 100%;
+  color: #ffffff;
+}
+
 .name {
   font-weight: bold;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Chat.module.css";
 
-const Chat = ({ messages, selectedChat }) => {
+const Chat = ({ messages, userName }) => {
   return (
     <div className={classes.body}>
       {messages.map((m, index) => (
@@ -9,7 +9,11 @@ const Chat = ({ messages, selectedChat }) => {
           {m.user == null ? (
             <label className={classes.notification}>{m.message}</label>
           ) : (
-            <div className={classes.message}>
+            <div
+              className={
+                m.user === userName ? classes.myMessage : classes.message
+              }
+            >
               <div className={classes.name}>{m.user}</div>
               <div className={classes.text}>{m.message}</div>
             </div>
