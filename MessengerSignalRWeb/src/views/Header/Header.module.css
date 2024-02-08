@@ -1,8 +1,28 @@
 .body {
   display: flex;
-  padding: 10px;
+  padding: 20px;
+  justify-content: space-between;
 }
 
-.input {
-  margin: auto;
+.buttonDelete {
+  color: #ffffff;
+  border: 0px black solid;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #e45252;
+  cursor: pointer;
+}
+
+.buttonExit {
+  color: #ffffff;
+  border: 0px black solid;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 18px;
+  outline: 0px black solid;
+  background-color: #271c46;
+  cursor: pointer;
+  margin-left: 10px;
 }

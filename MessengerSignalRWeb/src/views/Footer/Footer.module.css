@@ -1,8 +1,4 @@
 .body {
   display: flex;
-  padding: 10px;
-}
-
-.input {
-  margin: auto;
+  padding: 20px;
 }

@@ -53,6 +53,12 @@ const Main = ({ hubConnection }) => {
     messagesChange([{ message: m, user: u }, ...messages]);
   };
 
+  const exit = () => {
+    hubConnection.invoke("Exit", name, selectedChat);
+    messagesChange([]);
+    selectedChatChange("");
+  };
+
   hubConnection.on("Receive", displayMessage);
   hubConnection.on("Notify", displayMessage);
 
@@ -69,7 +75,7 @@ const Main = ({ hubConnection }) => {
       />
       <If value={selectedChat !== ""}>
         <div className={classes.chat}>
-          <Header name={name} nameChange={nameChange} />
+          <Header name={name} nameChange={nameChange} exit={exit} />
           <div className={classes.content}>
             <Chat messages={messages} selectedChat={selectedChat} />
           </div>
