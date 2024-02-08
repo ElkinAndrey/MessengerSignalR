@@ -7,13 +7,13 @@ import Chats from "../../views/Chats/Chats";
 import Header from "../../views/Header/Header";
 import Footer from "../../views/Footer/Footer";
 import Chat from "../../views/Chat/Chat";
+import If from "../../views/If/If";
 
 const Main = ({ hubConnection }) => {
   const [name, nameChange] = useState("");
   const [message, messageChange] = useState("");
   const [messages, messagesChange] = useState([]);
   const [selectedChat, selectedChatChange] = useState("");
-  const [newChat, newChatChange] = useState("");
   const [chats, chatsChange] = useState([]);
 
   const getCallback = async () => {
@@ -21,21 +21,12 @@ const Main = ({ hubConnection }) => {
     chatsChange(response.data);
   };
 
-  const addCallback = async (name) => {
-    await ChatApi.addChat(name);
-  };
-
   const deleteCallback = async (name) => {
     await ChatApi.deleteChat(name);
   };
 
   const [fetchGet] = useFetching(getCallback);
-  const [fetchAdd] = useFetching(addCallback);
   const [fetchDelete] = useFetching(deleteCallback);
-
-  const add = () => {
-    fetchAdd(newChat);
-  };
 
   const join = (n) => {
     if (selectedChat !== "") {
@@ -76,19 +67,20 @@ const Main = ({ hubConnection }) => {
         selectedChat={selectedChat}
         selectedChatChange={join}
       />
-
-      <div className={classes.chat}>
-        <Header name={name} nameChange={nameChange} />
-        <div className={classes.content}>
-          <Chat messages={messages} selectedChat={selectedChat} />
+      <If value={selectedChat !== ""}>
+        <div className={classes.chat}>
+          <Header name={name} nameChange={nameChange} />
+          <div className={classes.content}>
+            <Chat messages={messages} selectedChat={selectedChat} />
+          </div>
+          <Footer
+            message={message}
+            messageChange={messageChange}
+            send={send}
+            name={name}
+          />
         </div>
-        <Footer
-          message={message}
-          messageChange={messageChange}
-          send={send}
-          name={name}
-        />
-      </div>
+      </If>
     </div>
   );
 };

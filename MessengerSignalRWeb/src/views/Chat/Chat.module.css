@@ -1,5 +1,6 @@
 .body {
   padding: 20px 30px;
+  position: relative;
 }
 
 .notification {
@@ -16,12 +17,15 @@
   border-radius: 20px;
   display: inline-block;
   background: #ffffff;
+  max-width: 100%;
 }
 
 .name {
   font-weight: bold;
 }
 
-.text{
-
+.text {
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
 }

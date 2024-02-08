@@ -4,15 +4,6 @@ import classes from "./Chat.module.css";
 const Chat = ({ messages, selectedChat }) => {
   return (
     <div className={classes.body}>
-      {/* <div>
-        <b>Новый чат</b>
-        <input
-          value={newChat}
-          onChange={(e) => newChatChange(e.target.value)}
-        />
-        <button onClick={add}>Добавить</button>
-      </div> */}
-      {/* <b>{`Чат: ${selectedChat}`}</b> */}
       {messages.map((m, index) => (
         <div key={index}>
           {m.user == null ? (
