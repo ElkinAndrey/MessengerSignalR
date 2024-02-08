@@ -4,6 +4,10 @@
   justify-content: space-between;
 }
 
+.groupName {
+  font-size: 20px;
+}
+
 .buttonDelete {
   color: #ffffff;
   border: 0px black solid;
@@ -13,6 +17,7 @@
   outline: 0px black solid;
   background-color: #e45252;
   cursor: pointer;
+  margin-left: 10px;
 }
 
 .buttonExit {

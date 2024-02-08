@@ -10,6 +10,7 @@ const Chats = ({
   selectedChatChange,
   className = "",
   style = {},
+  addChat,
 }) => {
   const classChat = (chat) => {
     return chat === selectedChat ? classes.selectedChat : classes.chat;
@@ -30,6 +31,8 @@ const Chats = ({
   const add = () => {
     fetchAdd(name);
     addModalChange(false);
+    addChat(name);
+    nameChange("");
   };
 
   return (

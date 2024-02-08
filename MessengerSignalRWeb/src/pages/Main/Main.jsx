@@ -59,6 +59,14 @@ const Main = ({ hubConnection }) => {
     selectedChatChange("");
   };
 
+  const deleteChat = (name) => {
+    chatsChange([...chats.filter((ch) => ch !== name)]);
+  };
+
+  const addChat = (name) => {
+    chatsChange([...chats, name]);
+  };
+
   hubConnection.on("Receive", displayMessage);
   hubConnection.on("Notify", displayMessage);
 
@@ -72,10 +80,17 @@ const Main = ({ hubConnection }) => {
         chats={chats}
         selectedChat={selectedChat}
         selectedChatChange={join}
+        addChat={addChat}
       />
       <If value={selectedChat !== ""}>
         <div className={classes.chat}>
-          <Header name={name} nameChange={nameChange} exit={exit} />
+          <Header
+            name={name}
+            nameChange={nameChange}
+            chatName={selectedChat}
+            deleteChat={deleteChat}
+            exit={exit}
+          />
           <div className={classes.content}>
             <Chat messages={messages} selectedChat={selectedChat} />
           </div>
