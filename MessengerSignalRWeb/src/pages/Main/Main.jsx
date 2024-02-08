@@ -8,6 +8,7 @@ import Header from "../../views/Header/Header";
 import Footer from "../../views/Footer/Footer";
 import Chat from "../../views/Chat/Chat";
 import If from "../../views/If/If";
+import InputName from "../../views/InputName/InputName";
 
 const Main = ({ hubConnection }) => {
   const [name, nameChange] = useState("");
@@ -21,12 +22,7 @@ const Main = ({ hubConnection }) => {
     chatsChange(response.data);
   };
 
-  const deleteCallback = async (name) => {
-    await ChatApi.deleteChat(name);
-  };
-
   const [fetchGet] = useFetching(getCallback);
-  const [fetchDelete] = useFetching(deleteCallback);
 
   const join = (n) => {
     if (selectedChat !== "") {
@@ -37,10 +33,6 @@ const Main = ({ hubConnection }) => {
       messagesChange([]);
     }
     selectedChatChange(n);
-  };
-
-  const del = (name) => {
-    fetchDelete(name);
   };
 
   const send = () => {
@@ -100,6 +92,14 @@ const Main = ({ hubConnection }) => {
             send={send}
             name={name}
           />
+        </div>
+      </If>
+      <If value={selectedChat === ""}>
+        <div className={classes.inputName}>
+          <div>
+            <div className={classes.inputNameLogo}>Введите имя</div>
+            <InputName value={name} setValue={nameChange} />
+          </div>
         </div>
       </If>
     </div>

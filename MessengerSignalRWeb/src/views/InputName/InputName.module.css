@@ -12,3 +12,9 @@
   outline: 2px black solid;
   background-color: #f8f8f8;
 }
+
+.input:disabled {
+  border: 2px #8e8e8e solid;
+  background-color: #f8f8f8;
+  color: #8e8e8e;
+}

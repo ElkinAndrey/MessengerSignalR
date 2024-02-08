@@ -19,7 +19,7 @@ const Header = ({ name, nameChange, chatName, deleteChat, exit }) => {
 
   return (
     <div className={classes.body}>
-      <InputName value={name} setValue={nameChange} />
+      <InputName value={name} setValue={nameChange} disabled={true} />
       <div>
         <label className={classes.groupName}>{`Группа ${chatName}`}</label>
         <button className={classes.buttonDelete} onClick={del}>
